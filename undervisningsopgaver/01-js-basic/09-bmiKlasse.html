@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <script>
+        let vægt = prompt("Angiv vægt i kg");
+        let højde = prompt("Angiv højde i cm");
+        let BMI = vægt / (højde / 100 * højde / 100);
+
+
+
+        if (BMI < 19) {
+            alert("Din BMI er Undervægtig. Vil du prøve igen?");
+        } else if (BMI >= 20 && BMI < 25) {
+            alert("Din BMI er Normal. Vil du prøve igen?");
+        } else if (BMI >= 25 && BMI < 30) {
+            alert("Din BMI er Overvægtig. Vil du prøve igen?");
+        } else if (BMI >= 30 && BMI < 35) {
+            alert("Din BMI er Fed");
+        } else if (BMI >= 35 && BMI < 40) {
+            alert("Din BMI er Svær fedme. Vil du prøve igen?");
+        } else if (BMI >= 40)
+            alert("Din BMI er Ekstrem fed. Vil du prøve igen?");
+
+
+        if (confirm = true) {
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>

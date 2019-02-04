@@ -10,17 +10,11 @@
 
 <body>
     <script>
-        let vægt = prompt("Angiv vægt i kg");
-        let højde = prompt("Angiv højde i meter");
+        let vægt = 65;
+        let højde = 160;
         let BMI = vægt / (højde / 100 * højde / 100);
-
-        let resultat = `BMI er ${BMI}. Har du brug for at prøve igen?`;
-
-        confirm(resultat);
-
-        if (confirm = true) {
-            location.reload();
-        }
+        let resultat = `BMI er ${BMI}`;
+        console.log(resultat);
     </script>
 </body>
 
