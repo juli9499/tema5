@@ -48,10 +48,12 @@ under teksten.
             console.log(`Dyr: ${dyr.navn}, type: ${dyr.type}, levested: ${dyr.levested}`);
 
 
+            document.querySelector("#dyr").innerHTML = `Dyr: ${dyr.navn}, type: ${dyr.type}, levested: ${dyr.levested} <br>`;
 
-            document.querySelector("#dyr").innerHTML = `<img src= ${dyr.billede} alt= "lyserød gris">`;
+            document.querySelector("#dyr").innerHTML += `<img src= ${dyr.billede} alt= "lyserød gris">`;
 
-            document.querySelector("#dyr").innerHTML += `Dyr: ${dyr.navn}, type: ${dyr.type}, levested: ${dyr.levested}`;
+
+
 
         }
     </script>
