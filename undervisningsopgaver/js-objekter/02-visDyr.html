@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vis dyret i DOM</title>
+    <link rel="stylesheet" href="">
+</head>
+
+
+
+
+
+
+<body>
+
+    <!--
+Gem 01-objekt.html i en ny kopi, 02-visDyr.html.
+
+Lav et tomt div-tag i DOM’en, som du kan bruge til at vise informationerne om dyret.
+
+I scriptet skal du huske at lave en eventlistener på, om DOM-indholdet er loaded (div-tagget skal være læst ind).
+
+Dét, du i dyr-a-filen udskrev
+i console.log, skal du nu udskrive i
+div-tagget.
+
+Vis også billedet i div-tagget. Placer det
+under teksten.
+-->
+
+    <div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        function start() {
+            let dyr = {
+                "navn": "gris",
+                "billede": "http://helf-kea.dk/test/gris.png",
+                "type": "pattedyr",
+                "levested": "svinefarm"
+            };
+
+            console.log(dyr);
+            console.log(`Dyr: ${dyr.navn}, type: ${dyr.type}, levested: ${dyr.levested}`);
+
+
+            //           let grisURL = `http://helf-kea.dk/test/gris.png`;
+
+            document.querySelector("div").innerHTML = `<img src= ${dyr.billede} alt= "lyserød gris">`;
+
+            document.querySelector("div").innerHTML += `Dyr: ${dyr.navn}, type: ${dyr.type}, levested: ${dyr.levested}`;
+
+        }
+    </script>
+</body>
+
+
+
+
+
+
+
+</html>
