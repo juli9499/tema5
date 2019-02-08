@@ -10,14 +10,24 @@
 
 <style>
     .dyr {
-        border: 2px solid #74bfff;
-        margin: 5px;
+        border: 2px dotted #000000;
+        margin: 10px;
         padding: 10px;
+        color: #000000;
+        background-color: #ffeeff;
     }
 
     #liste {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    img {
+        max-height: 260px;
+        max-width: 260px;
+
+
+
     }
 </style>
 
@@ -33,7 +43,7 @@
             let dest = document.querySelector("#liste");
 
             async function getJson() {
-                let jsonData = await fetch("dyr.json");
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
                 alleDyr = await jsonData.json();
                 visdyr();
             }
@@ -45,8 +55,12 @@
                             <div class="dyr">
                             <h2>${dyr.navn}</h2>
                             <img src="${dyr.billede}" alt="${dyr.navn}">
-                            <p>Type: ${dyr.type}</p>
-                            <p>Levested: ${dyr.levested}</p>
+                            <p>Github: ${dyr.github}</p>
+                            <p>Alder: ${dyr.alder}</p>
+                            <p>Køn: ${dyr.køn}</p>
+                            <p>Email: ${dyr.email}</p>
+                            <p>Hold: ${dyr.hold}</p>
+                            <p>Historie: ${dyr.historie}</p>
                         </div>`;
                 })
             }
