@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indkæs og vis JSON</title>
+    <title>Personliste</title>
     <link rel="stylesheet" href="">
 </head>
 
 <style>
-    .dyr {
+    .personer {
         border: 2px dotted #000000;
         margin: 20px;
         padding: 10px;
@@ -43,7 +43,9 @@
 <body>
     <div id="liste"></div>
     <script>
-        let alleDyr = [];
+        let allePersoner = [];
+        let filter = "b";
+
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
@@ -51,27 +53,29 @@
 
             async function getJson() {
                 let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
-                alleDyr = await jsonData.json();
-                visdyr();
+                allePersoner = await jsonData.json();
+                visPersoner();
             }
 
-            function visdyr() {
+            function visPersoner() {
                 //                alert("hi")
-                alleDyr.forEach(dyr => {
-                    dest.innerHTML += `
-                            <div class="dyr">
-                            <h2>${dyr.navn}</h2>
-                            <img src="${dyr.billede}" alt="${dyr.navn}">
-                            <p>Github: ${dyr.github}</p>
-                            <p>Alder: ${dyr.alder}</p>
-                            <p>Køn: ${dyr.køn}</p>
-                            <p>Email: ${dyr.email}</p>
-                            <p>Hold: ${dyr.hold}</p>
-                            <p>Historie: ${dyr.historie}</p>
+                allePersoner.forEach(personer => {
+                    if (personer.hold == filter) {
+                        dest.innerHTML += `
+                            <div class="personer">
+                            <h2>${personer.navn}</h2>
+                            <img src="${personer.billede}" alt="${personer.navn}">
+                            <p>Github: ${personer.github}</p>
+                            <p>Alder: ${personer.alder}</p>
+                            <p>Køn: ${personer.køn}</p>
+                            <p>Email: ${personer.email}</p>
+                            <p>Hold: ${personer.hold}</p>
+                            <p>Historie: ${personer.historie}</p>
                         </div>`;
+                    }
                 })
             }
-            // visdyr();
+            // visPersoner();
             getJson();
         }
     </script>
