@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personliste der virker</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    .personer {
+        border: 2px dotted #207ec3;
+        margin: 20px;
+        padding: 10px;
+        color: #000000;
+        background-color: #fff2fe;
+    }
+
+    #liste {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    img {
+        display: block;
+        max-width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h2 {
+        color: #000000;
+        font-family: arial;
+        text-align: center;
+    }
+
+    p {
+        font-family: arial;
+    }
+
+    .menu {
+        text-align: center;
+        background-color: aliceblue
+    }
+
+    /*
+    .holdB {
+        background-color: #ea7ccc;
+        color: white;
+        border-radius: 20%;
+    }
+*/
+</style>
+
+
+
+<body>
+    <div class="menu">
+        <button class="filter valgt" data-hold="alle">Alle</button>
+        <button class="filter" data-hold="a">Hold A</button>
+        <button class="filter" data-hold="b">Hold B</button>
+    </div>
+
+    <div id="liste"></div>
+
+
+
+    <script>
+        let allePersoner = [];
+        let filter = "alle";
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            let dest = document.querySelector("#liste");
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+                allePersoner = await jsonData.json();
+                visPersoner();
+            }
+
+            function visPersoner() {
+                dest.innerHTML = "";
+                allePersoner.forEach(personer => {
+                    if (filter == "alle" || filter == personer.hold) {
+                        dest.innerHTML += `
+                            <div class="personer">
+                            <h2>${personer.navn}</h2>
+                            <img src="${personer.billede}" alt="${personer.navn}">
+                            <p>Github: ${personer.github}</p>
+                            <p>Alder: ${personer.alder}</p>
+                            <p>Køn: ${personer.køn}</p>
+                            <p>Email: ${personer.email}</p>
+                            <p>Hold: ${personer.hold}</p>
+                            <p>Historie: ${personer.historie}</p>
+                        </div>
+                        `;
+                    }
+                })
+            }
+            //function visPersoner slut
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+
+            function filtrering() {
+                filter = this.getAttribute("data-hold");
+                visPersoner();
+            }
+            getJson();
+        }
+    </script>
+</body>
+
+</html>
