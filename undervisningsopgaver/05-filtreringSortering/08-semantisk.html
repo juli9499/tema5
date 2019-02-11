@@ -80,19 +80,19 @@
 
 <body>
 
+
+    <h1>Alle</h1>
     <header>
-        <h1>Alle</h1>
+
+        <nav class="menu">
+            <button class="filter valgt" data-hold="alle">Alle</button>
+            <button class="filter" data-hold="a">Hold A</button>
+            <button class="filter" data-hold="b">Hold B</button>
+        </nav>
     </header>
 
-    <nav class="menu">
-        <button class="filter valgt" data-hold="alle">Alle</button>
-        <button class="filter" data-hold="a">Hold A</button>
-        <button class="filter" data-hold="b">Hold B</button>
-    </nav>
+    <section id=liste></section>
 
-    <div class="section">
-        <div id="liste"></div>
-    </div>
 
 
 
@@ -124,7 +124,7 @@
                             <div class="personer">
                             <h2>${personer.navn}</h2>
                             <img src="${personer.billede}" alt="${personer.navn}">
-                            <p>Github: <a target="_blank" href="http://github.com/${person.github}">${person.github}</a></p>
+                            <p>Github: <a target="_blank" href="http://github.com/${personer.github}">${personer.github}</a></p>
                             <p>Alder: ${personer.alder}</p>
                             <p>Køn: ${personer.køn}</p>
                             <p>Email: ${personer.email}</p>
