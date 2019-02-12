@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personliste der virker</title>
+    <title>Popup</title>
     <link rel="stylesheet" href="">
 </head>
 
@@ -77,7 +77,7 @@
         width: 100vw;
         height: 100vw;
         position: fixed;
-        background-color: #0062ff;
+        background-color: blue;
     }
 
     #indhold {
@@ -96,10 +96,6 @@
 
     #luk button {
         font-size: 2em;
-    }
-
-    html {
-        overflow-y: hidden;
     }
 
 </style>
@@ -166,7 +162,21 @@
                         dest.insertAdjacentHTML("beforeend", template);
                         dest.lastElementChild.addEventListener("click", åbn);
 
-                        function åbn() {} //her skal udfyldes
+                        function åbn() {
+                            document.querySelector("#indhold").innerHTML = `
+                            <article class="personer">
+                            <h2>${personer.navn}</h2>
+                            <img src="${personer.billede}" alt="${personer.navn}">
+                            <p>Github: <a target="_blank" href="http://github.com/${personer.github}">${personer.github}</a></p>
+                            <p>Alder: ${personer.alder}</p>
+                            <p>Køn: ${personer.køn}</p>
+                            <p>Email: ${personer.email}</p>
+                            <p>Hold: ${personer.hold}</p>
+                            <p>Historie: ${personer.historie}</p>
+                        </article>
+                        `;
+                            document.querySelector("#popup").style.display = "block";
+                        }
                     }
                 })
             }
